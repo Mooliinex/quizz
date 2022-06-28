@@ -1,13 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-  TOTO
-</head>
-<body>
-{% block body %}{% endblock %}
-</body>
-</html>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="contain">
+        <form class="formLogin" action="{{ path('user_login') }}" method="POST">
+            <center>
+                <br>
+                <br><br>
+                <br><br>
+                <br>
+                <br>
+                <br><br>
+                <br><br>
+                <br>
+                <h1>Connectez-vous</h1>
+                <br>
+            <label>
+                <b>Email : </b>
+            </label>
+            <input type="email" placeholder="Email" name="_username" required>
+                <br>
+                <br>
+            <label>
+                <b>Mot de passe : </b>
+            </label>
+            <input type="password" placeholder="Mot de passe" name="_password" required>
+            <br>
+                <br>
+                <input class="btn btn-danger btn-lg gap-1 col-3 mx-auto text-wrap" type="submit" id='submit' name="formRegister" value='Valider'>
+                <br>
+                <br>
+                <a id="sc" href="{{ path('user_register') }}">Inscrivez-vous !</a>
+            </center>
+        </form>
+        </div>
+{% endblock %}
