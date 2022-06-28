@@ -33,14 +33,10 @@ class User implements PasswordAuthenticatedUserInterface
     private $email;
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min=8, minMessage="Votre mot de passe doit faire minimum 8 caractères")
-     * @Assert\EqualTo(propertyPath="confirm_password", message="Vous n'avez pas tapé le même mot de passe")
-     */
+     * @Assert\Length(min=4, minMessage="Votre mot de passe doit faire minimum 4 caractères")
+    */
     private $password;
-    /**
-     * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas tapé le même mot de passe")
-     */
-    public $confirm_password;
+
     /**
      * @ORM\OneToMany(targetEntity=Quiz::class, mappedBy="createdBy", orphanRemoval=true)
      */
