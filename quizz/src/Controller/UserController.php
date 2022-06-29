@@ -18,12 +18,14 @@ class UserController extends AbstractController
     /**
      * @Route("/register", name="user_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $encoder)
+    public function register(Request $request, UserPasswordHasherInterface $passwordHasher)
     {
         $user = new User();
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword($passwordHasher->hashPassword($user, $form->get('password')->getData()));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
