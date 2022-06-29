@@ -37,9 +37,6 @@ class User implements PasswordAuthenticatedUserInterface
     */
     private $password;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Quiz::class, mappedBy="createdBy", orphanRemoval=true)
-     */
     private $Quizz;
 
     public function __construct()
