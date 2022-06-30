@@ -2,22 +2,18 @@
 
 namespace App\Entity;
 
+use App\Repository\CategorieRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Categorie
- *
- * @ORM\Table(name="categorie")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=CategorieRepository::class)
  */
 class Categorie
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
     private $id;
 
@@ -27,6 +23,42 @@ class Categorie
      * @ORM\Column(name="name", type="string", length=100, nullable=false)
      */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="category_order", type="string", length=255, nullable=false)
+     */
+    private $categoryOrder;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCategoryOrder(): ?string
+    {
+        return $this->categoryOrder;
+    }
+
+    public function setCategoryOrder(string $categoryOrder): self
+    {
+        $this->categoryOrder = $categoryOrder;
+
+        return $this;
+    }
 
 
 }
