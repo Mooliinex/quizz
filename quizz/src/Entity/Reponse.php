@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="reponse")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ReponseRepository")
  */
 class Reponse
 {
@@ -41,6 +42,47 @@ class Reponse
      * @ORM\Column(name="reponse_expected", type="boolean", nullable=true, options={"default"="NULL"})
      */
     private $reponseExpected = 'NULL';
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getIdQuestion(): ?int
+    {
+        return $this->idQuestion;
+    }
+
+    public function setIdQuestion(?int $idQuestion): self
+    {
+        $this->idQuestion = $idQuestion;
+
+        return $this;
+    }
+
+    public function getReponse(): ?string
+    {
+        return $this->reponse;
+    }
+
+    public function setReponse(?string $reponse): self
+    {
+        $this->reponse = $reponse;
+
+        return $this;
+    }
+
+    public function isReponseExpected(): ?bool
+    {
+        return $this->reponseExpected;
+    }
+
+    public function setReponseExpected(?bool $reponseExpected): self
+    {
+        $this->reponseExpected = $reponseExpected;
+
+        return $this;
+    }
 
 
 }
