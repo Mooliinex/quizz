@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    {% if not app.user %}
+    {% else %}
+        <div class="container p-3 bg-white rounded">
+            <h1 id="creationQuizz">Bienvenue
+                {{ app.user.name }}
+                sur MyQuizzz</h1>
+
+
+            <br>
+            <br>
+            <div class="container table-responsive">
+                <table class="table table-hover table-responsive table-bordered align-middle">
+                    <thead>
+                    <tr class="fs-2">
+                        <th scope="col">#</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Crée le</th>
+                        <th scope="col">Créateur</th>
+                        <th scope="col">Modifier</th>
+                        <th scope="col">Supprimer</th>
+                        <th scope="col">Jouer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for quiz in quizs %}
+
+                        <tr>
+                            <th scope="row"></th>
+                            <td>
+                                <h3>{{ quiz.title }}</h3>
+                            </td>
+                            <td>
+                                <h3>{{ quiz.description }}</h3>
+                            </td>
+                            <td>
+                                <h3>{{ quiz.createdAt | date('d/m/Y') }}</h3>
+                            </td>
+                            <td>
+                                <h3>{{ quiz.createdBy.getUsername() }}</h3>
+                            </td>
+                            {% if (app.user.email == 'root@root.fr' or app.user == quiz.createdBy)  %}
+                                <td>
+                                    <a class="btn btn-primary" href="{{ path('edit_quiz',{'id' : quiz.id}) }}">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger" href="{{ path('quiz_delete',{'id' : quiz.id}) }}" onclick="return confirm('Attention ceci va supprimer le quiz selectionné')">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+                                {% if quiz.questions|length > 0 %}
+                                    <td>
+                                        <a class="btn btn-success" href="{{ path('quiz_play',{'id' : quiz.id}) }}">
+                                            <i class="fa-solid fa-flag-checkered"></i>
+                                        </a>
+                                    </td>
+                                {% else %}
+                                    <td>
+                                        <a class="btn btn-success disabled">
+                                            <i class="fa-solid fa-flag-checkered"></i>
+                                        </a>
+                                    </td>
+                                {% endif %}
+
+                            {% else %}
+                                <td>
+                                    <a class="btn btn-primary disabled">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger disabled">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+                                {% if quiz.questions|length > 0 %}
+                                    <td>
+                                        <a class="btn btn-success" href="{{ path('quiz_play',{'id' : quiz.id}) }}">
+                                            <i class="fa-solid fa-flag-checkered"></i>
+                                        </a>
+                                    </td>
+                                {% else %}
+                                    <td>
+                                        <a class="btn btn-success disabled">
+                                            <i class="fa-solid fa-flag-checkered"></i>
+                                        </a>
+                                    </td>
+                                {% endif %}
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </h1>
+        </div>{% endif %}{% endblock %}
