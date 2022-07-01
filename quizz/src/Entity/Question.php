@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="question")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\QuestionRepository")
  */
 class Question
 {
@@ -34,6 +35,35 @@ class Question
      * @ORM\Column(name="question", type="string", length=255, nullable=true, options={"default"="NULL"})
      */
     private $question = 'NULL';
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getIdCategorie(): ?int
+    {
+        return $this->idCategorie;
+    }
+
+    public function setIdCategorie(?int $idCategorie): self
+    {
+        $this->idCategorie = $idCategorie;
+
+        return $this;
+    }
+
+    public function getQuestion(): ?string
+    {
+        return $this->question;
+    }
+
+    public function setQuestion(?string $question): self
+    {
+        $this->question = $question;
+
+        return $this;
+    }
 
 
 }
