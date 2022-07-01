@@ -3,32 +3,13 @@
 {% block title %}Quizz{% endblock %}
 
 {% block body %}
-<style>
-    /*.example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }*/
-    /*.example-wrapper code { background: #F5F5F5; padding: 2px 6px; }*/
-    .title { background-color: red }
-</style>
-        <div class="example-wrapper">
-            <h1 class="title">Quizz</h1>
-        </div>
-    <div class="content-container">
-        <div class="container-fluid">
-            <div class="jumbotron">
-                <div class="list-group">
-                    <h2>Catégories :</h2>
-                    <a href="#" class="list-group-item list-group-item-action active">{$name}</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                </div>
+    <div class="container">
+        <h1>Catégories</h1>
+        {% for categorie in categories %}
+            <div>
+                <p>{{ categorie.name }}</p>
+
             </div>
-        </div>
+        {% endfor %}
     </div>
 {% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Categorie;
 use App\Repository\CategorieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,11 +13,15 @@ class HomeController extends AbstractController
     #[Route('/', name: 'homepage')]
     public function index(CategorieRepository $categorieRepository): Response
     {
-        $categorie = $categorieRepository->findAll();
-        dd($categorie);
+        $categories = $categorieRepository->findAll();
+//        dd($categorie);
+
+
+//        $categorie = $this->getDoctrine()->getRepository(Categorie::class)->findAll();
+//        dd($categorie);
 
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'categories' => $categories,
         ]);
     }
 }
