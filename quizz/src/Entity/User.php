@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass= UserRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields= {"email"}, message="E-mail déjà utilisé")
  * @UniqueEntity(fields= {"username"}, message="Username déjà utilisé")
  */
@@ -37,9 +37,6 @@ class User implements PasswordAuthenticatedUserInterface
     */
     private $password;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Quiz::class, mappedBy="createdBy", orphanRemoval=true)
-     */
     private $Quizz;
 
     public function __construct()
