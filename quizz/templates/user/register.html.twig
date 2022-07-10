@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <div  id="contain">
+            <br>
+            <br><br>
+            <br><br>
+            <br>
+            <br>
+            <br><br>
+            <br><br>
+            <br>
+            {{ form_start(form) }}
+            <center>
+                <h1>Bienvenue sur le meilleur Quizz qui existe !
+                </h1>
+                <br>
+                <b>
+            {{ form_row(form.username, {'label' : 'Pseudo :   ','attr':
+                {'placeholder' : 'Entrer un Pseudo'}}) }}
+                    <br>
+            {{ form_row(form.email, {'label' : 'Adresse e-mail :   ','attr':
+                {'placeholder' : 'Email'}}) }}
+                    <br>
+            {{ form_row(form.password, {'label' : 'Mot de passe : ','attr':
+                {'placeholder' : 'Mot de passe'}}) }}
+                    <br>
+                </b>
+            <br>
+                <input class="btn btn-danger btn-lg gap-2 col-6 mx-auto text-wrap" type="submit" id='submit' value='Validation de votre compte'>
+                <br>
+                <br>
+                <a id="sc" href="{{ path('user_login') }}">Déjà un compte ?</a>
+            </center>
+        </div>
+        {{ form_end(form) }}
+    <div class="col-md-12 text-center" style="margin-top: 30px; margin-bottom: 30px;">
+        <a href="/" class="btn btn-success">Retour 🥸</a>
+    </div>
+{% endblock %}
